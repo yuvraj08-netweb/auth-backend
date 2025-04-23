@@ -15,10 +15,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRouter);
 
-
 // default home page
 app.get("/", (req, res) => {
-  res.json({ message: "Hello from the servers" });
+  res.json({
+    message: "Welcome to the AUTH DEMO Server",
+    apis: {
+      "/api/auth/signup": "Register a new user",
+      "/api/auth/signin": "Login a user",
+      "/api/auth/signout": "Logout a user",
+      "/api/auth/send-verification-code": "Send a verification code to verify the user's account",
+      "/api/auth/verify-verification-code": "Verify the user's account",
+      "/api/auth/change-password": "Change the user's password",
+      "/api/auth/send-forgot-password-code": "Send a code to the user's email to reset the password",
+      "/api/auth/verify-forgot-password-code": "Verify the code sent to the user's email to reset the password",
+    },
+  });
 });
 
 mongoose
